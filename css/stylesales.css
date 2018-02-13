@@ -1,0 +1,22 @@
+body {
+    background-color: salmon;
+    color: rgb(13, 95, 49);
+}
+h1 {
+    font-family: 'Bitter', serif;
+    text-align: center;
+    margin-bottom: 15px;
+    margin-top: 45px;
+}
+h2 {
+    text-decoration: underline;
+    margin-left: 45px;
+    margin-botton: 15px;
+    margin-top: 15px;
+}
+ul {
+    font-family: Helvetica;
+    margin-left: 35px;
+    margin-top: 20px;
+    margin-bottom: 50px;
+}

@@ -1,0 +1,43 @@
+body {
+    background-color: rgb(154, 154, 216);
+    color: black;
+}
+h1 {
+    font-family: 'Bitter', serif;
+    text-align: center;
+    margin-bottom: 75px;
+    margin-top: 65px;
+}
+h2 {
+    text-align: center;
+    margin-bottom: 35px;
+}
+img {
+    display: block;
+    margin: auto;
+    height: 65px;
+    width: 250px;
+    margin-bottom: 35px;
+
+}
+h3 {
+    font-family: 'Bitter', serif;
+    font-size: 1em;
+    text-align: left;
+}
+caption {
+    text-align: center;
+}
+ul {
+    font-family: "Helvetica";
+}
+li {
+    font-family: "Helvetica";
+    font-size: 12pt;
+}
+p {
+    font-family: "Times New Roman";
+    font-size: 16pt;
+    text-align: left;
+    text-indent: 50px;
+}
