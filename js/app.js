@@ -13,17 +13,17 @@ var pike = {
   pushSales: function() {
     for (var i = 0; i < storeHours.length; i++){
       var temp = Math.floor((pike.rate(pike.minCust, pike.maxCust) * pike.avgCookies));
-      pike.sales.push(temp);
+      this.sales.push(temp);
       }
     },
   render: function() {
     var ulEl = document.getElementById('pike');
       for (var i = 0; i < storeHours.length; i++) {
         var liEl = document.createElement('li');
-        liEl.textContent = storeHours[i] + ': ' + pike.sales[i];
+        liEl.textContent = storeHours[i] + ': ' + this.sales[i];
         ulEl.appendChild(liEl);
       }
     },
 };
-//pike.pushSales();
+pike.pushSales();
 pike.render();
