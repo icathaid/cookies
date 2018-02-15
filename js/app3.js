@@ -35,6 +35,9 @@ Store.prototype.render = function(){
         tdEl.textContent = this.hourlySales[i];
         trEl.appendChild(tdEl);
     };
+    var tdEl = document.createElement('td')
+    tdEl.textContent = this.dailySales;
+    trEl.appendChild(tdEl);
     storeTable.appendChild(trEl);
 };
 new Store('pike', 23, 65, 6.3);
@@ -55,6 +58,10 @@ function makeHeaderRow(){
         trEl.appendChild(thEl);
         storeTable.appendChild(trEl);
     }
+    var thEl = document.createElement('td');
+    thEl.textContent = 'Daily Total:';
+    trEl.appendChild(thEl);
+    storeTable.appendChild(trEl);
 };
 function makeStoreRows(){
     for (var i = 0; i < storeHours.length; i++){
