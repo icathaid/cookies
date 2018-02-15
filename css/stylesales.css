@@ -8,15 +8,16 @@ h1 {
     margin-bottom: 15px;
     margin-top: 45px;
 }
-h2 {
-    text-decoration: underline;
-    margin-left: 45px;
-    margin-botton: 15px;
-    margin-top: 15px;
+table {
+    color: yellow;
+    font-family: 'Ariel', sans-serif;
+    text-align: center;
+    background-color: plum;
+    border-color: #000000;
 }
-ul {
-    font-family: Helvetica;
-    margin-left: 35px;
-    margin-top: 20px;
-    margin-bottom: 50px;
+tr {
+    background-color: purple;
+}
+td {
+    background-color: black;
 }
