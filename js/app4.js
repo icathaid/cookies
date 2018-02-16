@@ -1,9 +1,11 @@
-var storeHours = ['6:00 AM', '7:00 AM', '8:00 AM', '9:00 AM', '10:00 AM', '11:00 AM', '12:00 PM', '1:00 PM', '2:00 PM', '3:00 PM', '4:00 PM', '5:00 PM', '6:00 PM', '7:00'];
+var storeHours = ['6:00 AM', '7:00 AM', '8:00 AM', '9:00 AM', '10:00 AM', '11:00 AM', '12:00 PM', '1:00 PM', '2:00 PM', '3:00 PM', '4:00 PM', '5:00 PM', '6:00 PM', '7:00 PM'];
 var patStores = [];
 var storeTable = document.getElementById('pike'); 
 var pikeForm = document.getElementById('pikeForm');
+var hourlies = [];
+var dailies = [];
 function Store(name, minCust, maxCust, avgCookies) {
-    this.name = name + ' sales: ';
+    this.name = name;
     this.minCust = minCust;
     this.maxCust = maxCust;
     this.avgCookies = avgCookies;
@@ -29,7 +31,7 @@ Store.prototype.calcDailySales = function(){
 Store.prototype.render = function(){
     var trEl = document.createElement('tr');
     var tdEl = document.createElement('td');	
-    tdEl.textContent = this.name;
+    tdEl.textContent = this.name + ' sales: ';
     trEl.appendChild(tdEl);
     for (var i = 0; i < storeHours.length; i++){
         var tdEl = document.createElement('td');
@@ -46,7 +48,7 @@ new Store('seatac', 11, 19, 2.2);
 new Store('sc', 11, 38, 3.7);
 new Store('capHill', 20, 38, 2.3);
 new Store('alki', 2, 16, 4.6);
-//-=-=-=-=-=-=-
+//-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 function makeHeaderRow(){
     var trEl = document.createElement('tr');
     var thEl = document.createElement('th');
@@ -63,6 +65,39 @@ function makeHeaderRow(){
     trEl.appendChild(thEl);
     storeTable.appendChild(trEl);
 };
+//-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+function addShit(){
+    var dailyTotal = 0;
+    for (var j = 0; j < storeHours.length; j++){
+        var total = 0;
+        for (var i = 0; i < patStores.length; i++){
+            total += patStores[i].hourlySales[j]
+        };
+        hourlies.push(total);
+        dailyTotal += total;
+        dailies = dailyTotal;
+    };
+    //alert(dailies);
+};
+addShit();
+//-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+function makeFooterRow(){
+    var trEl = document.createElement('tr');
+    var tfEl = document.createElement('tf');
+    tfEl.textContent = 'Totals: ';
+    trEl.appendChild(tfEl);
+    for (var i = 0; i < storeHours.length; i++){
+        var tfEl = document.createElement('td')
+        tfEl.textContent = hourlies[i];
+        trEl.appendChild(tfEl);
+        storeTable.appendChild(trEl);
+    }
+    var tfEl = document.createElement('td');
+    tfEl.textContent = dailies;
+    trEl.appendChild(tfEl);
+    storeTable.appendChild(trEl);
+};
+//-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-storeHours.lengthstoreHours.lengthstoreHours.lengthstoreHours.length=-=-=-=-=-=-=-=-=-=-=-=-=-
 function makeStoreRows(){
     for (var i = 0; i < patStores.length; i++){
         patStores[i].render();
@@ -70,6 +105,8 @@ function makeStoreRows(){
 };
     makeHeaderRow();
     makeStoreRows();
+    makeFooterRow();
+    
 //-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 function appendForm(event){
     event.preventDefault();
@@ -109,6 +146,7 @@ function appendForm(event){
     var minCust = event.target.minCust.value;
     var maxCust = event.target.maxCust.value;
     var avgCookies = event.target.avgCookies.value;
-    makeStoreRows();
+    makeStoreRows();    
+    //addShit();
 };
 pikeForm.addEventListener('submit', appendForm);
