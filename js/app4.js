@@ -1,6 +1,7 @@
 var storeHours = ['6:00 AM', '7:00 AM', '8:00 AM', '9:00 AM', '10:00 AM', '11:00 AM', '12:00 PM', '1:00 PM', '2:00 PM', '3:00 PM', '4:00 PM', '5:00 PM', '6:00 PM', '7:00'];
 var patStores = [];
 var storeTable = document.getElementById('pike'); 
+var pikeForm = document.getElementById('pikeForm');
 function Store(name, minCust, maxCust, avgCookies) {
     this.name = name + ' sales: ';
     this.minCust = minCust;
@@ -67,6 +68,47 @@ function makeStoreRows(){
         patStores[i].render();
     };
 };
-makeHeaderRow();
-makeStoreRows();
-//-=-=-=-=-=-=-=-=-=-
+    makeHeaderRow();
+    makeStoreRows();
+//-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+function appendForm(event){
+    event.preventDefault();
+    patStores = [];
+    new Store(event.target.storeName.value, event.target.minCust.value, event.target.maxCust.value, event.target.avgCookies.value);
+    if (!event.target.storeName.value || !event.target.minCust.value || !event.target.maxCust.value || !event.target.avgCookies.value){
+        return alert('Fields cannot be empty!');
+    };
+    if (event.target.minCust.value - event.target.minCust.value !=0){
+        return alert('Minimum Customers must be a number.')
+    } else {
+        if (event.target.maxCust.value - event.target.maxCust.value !=0){
+            return alert('Maximum Customers must be a number.')
+        } else {
+            if (event.target.avgCookies.value - event.target.avgCookies.value !=0){
+                return alert('Average Cookies must be a number.')
+            } else {
+                if (event.target.minCust.value < 0){
+                    return alert('There must be at least 0 customers.')
+                } else {
+                    if (event.target.maxCust.value <=0){
+                        return alert('Maximum Customers must be greater than 0.')
+                    } else {
+                        if (event.target.avgCookies.value <=0){
+                            return alert('Average Cookies must be greater than 0.')
+                        } else {
+                            if (event.target.maxCust.value - event.target.minCust.value < 0){
+                                return alert('Maximum Customers must be at least Minimum Customers.')
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    var storeName = event.target.storeName.value;
+    var minCust = event.target.minCust.value;
+    var maxCust = event.target.maxCust.value;
+    var avgCookies = event.target.avgCookies.value;
+    makeStoreRows();
+};
+pikeForm.addEventListener('submit', appendForm);
