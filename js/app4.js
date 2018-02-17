@@ -48,6 +48,9 @@ new Store('seatac', 11, 19, 2.2);
 new Store('sc', 11, 38, 3.7);
 new Store('capHill', 20, 38, 2.3);
 new Store('alki', 2, 16, 4.6);
+    makeHeaderRow();
+    makeStoreRows();
+    makeFooterRow(); 
 //-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 function makeHeaderRow(){
     var trEl = document.createElement('tr');
@@ -102,15 +105,11 @@ function makeStoreRows(){
     for (var i = 0; i < patStores.length; i++){
         patStores[i].render();
     };
-};
-    makeHeaderRow();
-    makeStoreRows();
-    makeFooterRow();
-    
+};    
 //-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 function appendForm(event){
     event.preventDefault();
-    patStores = [];
+    storeTable.innerHTML='';
     new Store(event.target.storeName.value, event.target.minCust.value, event.target.maxCust.value, event.target.avgCookies.value);
     if (!event.target.storeName.value || !event.target.minCust.value || !event.target.maxCust.value || !event.target.avgCookies.value){
         return alert('Fields cannot be empty!');
@@ -146,6 +145,8 @@ function appendForm(event){
     var minCust = event.target.minCust.value;
     var maxCust = event.target.maxCust.value;
     var avgCookies = event.target.avgCookies.value;
-    makeStoreRows();    
+    makeHeaderRow();
+    makeStoreRows();
+    makeFooterRow();    
 };
 pikeForm.addEventListener('submit', appendForm);
