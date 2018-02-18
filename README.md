@@ -8,3 +8,5 @@ When you collapse your browser window or zoom in, the nav links overflow out of 
 still need to style the sales page and change the title and add home link
 
 append margins to shorthand
+
+forgot to add clear form fields on submit
