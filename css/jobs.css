@@ -5,7 +5,6 @@ body {
     background-color: slategray;
     color: rgb(219, 216, 29);
     text-align: center;
-
 }
 h1 {
     margin-bottom: 100px;
@@ -37,4 +36,10 @@ p {
 }
 #a {
     margin-top: 10%;
+}
+a:link {
+    color: rgb(35, 53, 219);
+}
+a:visited {
+    color: rgb(28, 45, 197);
 }
