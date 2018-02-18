@@ -142,6 +142,7 @@ function appendForm(event){
         }
     }
     var storeName = event.target.storeName.value;
+    
     var minCust = event.target.minCust.value;
     var maxCust = event.target.maxCust.value;
     var avgCookies = event.target.avgCookies.value;
