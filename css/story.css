@@ -1,0 +1,25 @@
+body {
+    background-color: rgb(99, 67, 214);   
+}
+img {
+    display: block;
+    margin: auto;
+}
+p {
+    text-align: left;
+    text-indent: 15%;
+    border: 15px;
+    margin-left: 2%;
+    margin-right: 2%;
+    margin-top: 3.5%;
+    margin-bottom: 5%;
+}
+#link {
+    text-align: center;
+}
+a:link {
+    color: salmon;
+}
+a:visited {
+    color: salmon;
+}
